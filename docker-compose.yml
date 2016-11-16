@@ -1,0 +1,19 @@
+version: "2"
+services:
+  cron:
+    container_name: cron
+    image: "cron:0.1"
+    environment:
+      NAMEBASE: "af-bank"
+    command:
+      - "/cron.sh"
+
+  af-m:
+    container_name: mongo
+    image: "mongo:3"
+    ports:
+      - "27017:27017"
+    command:
+      - --storageEngine
+      - wiredTiger
+
